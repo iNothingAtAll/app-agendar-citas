@@ -4,16 +4,16 @@ USE citas_db;
 
 -- Insertar roles
 INSERT INTO roles (nombre) VALUES
-('cliente'),
-('peluquero');
+('Cliente'),
+('Peluquero');
 
 
 -- Insertar estados de cita
 INSERT INTO estados_cita (nombre_estado) VALUES
-('pendiente'),
-('confirmada'),
-('cancelada'),
-('completada');
+('Pendiente'),
+('Confirmada'),
+('Cancelada'),
+('Completada');
 
 
 -- Insertar usuarios (peluqueros)
