@@ -15,7 +15,7 @@ RUN pip install -r ./requirements.txt
 
 
 # Expone el puerto por defecto de Flask
-EXPOSE 5000
+EXPOSE 5002
 
 # Variables de entorno para Flask
 ENV FLASK_APP=app.py
@@ -23,4 +23,4 @@ ENV FLASK_ENV=development
 
 
 # Comando para ejecutar la aplicación
-CMD ["flask", "run", "--host=0.0.0.0"]
+CMD ["flask", "run", "--host=0.0.0.0", "--port=5002"]

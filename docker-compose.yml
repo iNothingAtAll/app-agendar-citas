@@ -48,7 +48,7 @@ services:
             - ./api-citas/.env
         
         ports:
-            - 5001:5000
+            - 5001:5001
         
         volumes:
             - ./api-citas:/app
@@ -70,7 +70,7 @@ services:
             - ./api-barberos/.env
         
         ports:
-            - 5002:5000
+            - 5002:5002
         
         volumes:
             - ./api-barberos:/app
