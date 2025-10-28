@@ -17,7 +17,7 @@ class Barbero(db.Model):
     telefono = Column(String(20))
     
     # Relación con horarios ocupados
-    horarios_ocupados = relationship('HorarioOcupado', back_populates='barbero')
+    cronograma = relationship('Cronograma', back_populates='barbero')
     
     def to_dict(self):
         return {
@@ -29,21 +29,21 @@ class Barbero(db.Model):
         }
 
 
-class HorarioOcupado(db.Model):
-    __tablename__ = 'horarios_ocupados'
+class Cronograma(db.Model):
+    __tablename__ = 'cronograma'
     
-    id_horario = Column(Integer, primary_key=True, autoincrement=True)
+    id_cronograma = Column(Integer, primary_key=True, autoincrement=True)
     id_barbero = Column(Integer, ForeignKey('barberos.id_barbero'), nullable=False)
     fecha = Column(Date, nullable=False)
     hora = Column(Time, nullable=False)
     cita_id = Column(Integer, nullable=False)
     
     # Relación con barbero
-    barbero = relationship('Barbero', back_populates='horarios_ocupados')
+    barbero = relationship('Barbero', back_populates='cronograma')
     
     def to_dict(self):
         return {
-            'id_horario': self.id_horario,
+            'id_cronograma': self.id_cronograma,
             'id_barbero': self.id_barbero,
             'fecha': self.fecha.isoformat() if self.fecha else None,
             'hora': str(self.hora) if self.hora else None,

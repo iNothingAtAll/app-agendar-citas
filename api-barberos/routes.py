@@ -1,5 +1,5 @@
 from flask import jsonify
-from models import Barbero, HorarioOcupado
+from models import Barbero, Cronograma
 
 
 def register_routes(app):
@@ -35,11 +35,11 @@ def register_routes(app):
     @app.route('/cronograma', methods=['GET'])
     def get_all_horarios():
         try:
-            horarios = HorarioOcupado.query.all()
+            cronograma = Cronograma.query.all()
 
             return jsonify({
                 'success': True,
-                'data': [horario.to_dict() for horario in horarios],
+                'data': [horario.to_dict() for horario in cronograma],
             }), 200
 
         except Exception as e:
