@@ -10,7 +10,7 @@ def register_routes(app):
             'version': '1.0.0',
             'endpoints': {
                 'barberos': '/barberos',
-                'cronograma': '/cronograma'
+                'cronograma': '/barberos/cronograma'
             }
         }
 
@@ -31,8 +31,8 @@ def register_routes(app):
                 'error': str(e)
             }), 500
 
-    
-    @app.route('/cronograma', methods=['GET'])
+
+    @app.route('/barberos/cronograma', methods=['GET'])
     def get_all_horarios():
         try:
             cronograma = Cronograma.query.all()
