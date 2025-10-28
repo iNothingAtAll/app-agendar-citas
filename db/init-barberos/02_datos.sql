@@ -11,7 +11,7 @@ INSERT INTO barberos (nombre, edad, correo, telefono) VALUES
 
 
 -- Ejemplo de horarios ocupados
-INSERT INTO horarios_ocupados (id_barbero, fecha, hora, cita_id) VALUES
+INSERT INTO cronograma (id_barbero, fecha, hora, cita_id) VALUES
 (1, '2025-10-28', '09:00:00', 1),
 (1, '2025-10-28', '11:00:00', 4),
 (2, '2025-10-28', '10:30:00', 2),

@@ -14,8 +14,8 @@ CREATE TABLE barberos (
 
 
 -- Tabla para registrar los horarios ocupados de los barberos
-CREATE TABLE horarios_ocupados (
-    id_horario INT PRIMARY KEY AUTO_INCREMENT,
+CREATE TABLE cronograma (
+    id_cronograma INT PRIMARY KEY AUTO_INCREMENT,
     id_barbero INT NOT NULL,
     fecha DATE NOT NULL,
     hora TIME NOT NULL,
