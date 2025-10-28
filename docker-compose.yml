@@ -1,37 +1,99 @@
 
 
 services:
-    # Servicio de base de datos MariaDB
-    mariadb:
+    citas-db:
         image: mariadb:11.4.8-noble
         container_name: citas-db
         restart: unless-stopped
         
         env_file:
-            - ./db/.env
+            - ./api-citas/.env
         
         ports:
             - 3306:3306
 
         volumes:
-            - mariadb_data:/var/lib/mysql
-            - ./db/init:/docker-entrypoint-initdb.d/
+            - citas_db:/var/lib/mysql
+            - ./db/init-citas:/docker-entrypoint-initdb.d/
+    
+        networks:
+            - citas-net
 
 
-    # Adminer para la gestión de la base de datos
-    phpmyadmin:
-        image: phpmyadmin:5.2.2-apache
-        container_name: citas-phpmyadmin
+    barberos-db:
+        image: mariadb:11.4.8-noble
+        container_name: barberos-db
         restart: unless-stopped
+        
         env_file:
-            - ./db/.env
-
+            - ./api-barberos/.env
+        
         ports:
-            - 8080:80
+            - 3307:3306
+
+        volumes:
+            - barberos_db:/var/lib/mysql
+            - ./db/init-barberos:/docker-entrypoint-initdb.d/
+
+        networks:
+            - barberos-net
+
+
+    api-citas:
+        build: ./api-citas/
+        container_name: api-citas
+        restart: unless-stopped
+        
+        env_file:
+            - ./api-citas/.env
+        
+        ports:
+            - 5001:5000
+        
+        volumes:
+            - ./api-citas:/app
 
         depends_on:
-            - mariadb
+                - barberos-db
+
+        networks:
+            - citas-net
+            - apis-net
+
+
+    api-barberos:
+        build: ./api-barberos/
+        container_name: api-barberos
+        restart: unless-stopped
+        
+        env_file:
+            - ./api-barberos/.env
+        
+        ports:
+            - 5002:5000
+        
+        volumes:
+            - ./api-barberos:/app
+        
+        depends_on:
+            - barberos-db
+            
+        networks:
+            - barberos-net
+            - apis-net
+
+
+networks:
+  barberos-net:
+    driver: bridge
+
+  citas-net:
+    driver: bridge
+
+  apis-net:
+    driver: bridge
 
 
 volumes:
-    mariadb_data:
+    barberos_db:
+    citas_db:
