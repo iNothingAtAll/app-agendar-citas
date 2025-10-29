@@ -1,3 +1,4 @@
+from flask_jwt_extended import JWTManager
 from flask import Flask
 from flask_cors import CORS
 
@@ -15,6 +16,11 @@ def create_app():
     # Vincula la api con la clase SQLAlchemy
     db.init_app(app)
     
+    
+    # Configura JWT
+    JWTManager(app)
+
+
     # Registro cada uno de las rutas
     register_routes(app)
     
