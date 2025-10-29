@@ -1,2 +1,0 @@
-curl -X POST http://localhost:5002/registrar/usuario -H "Content-Type: application/json" -d "{\"nombre\":\"carlos\", \"correo\":\"1234\", \"telefono\":\"asdf@algo.com\"}"
-curl -X GET http://localhost:5002/barberos -H "Authorization: Bearer ..."
