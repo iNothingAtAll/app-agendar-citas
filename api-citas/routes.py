@@ -3,6 +3,7 @@ from models import Cita, EstadoCita
 
 
 def register_routes(app):
+    # Ruta de bienvenida
     @app.route('/')
     def index():
         return {
@@ -15,6 +16,7 @@ def register_routes(app):
         }
     
 
+    # Ruta para obtener todas las citas
     @app.route('/citas', methods=['GET'])
     def get_all_citas():
         try:
@@ -32,6 +34,7 @@ def register_routes(app):
             }), 500
 
 
+    # Ruta para obtener una cita por ID de barbero
     @app.route('/cita/<int:barbero_id>', methods=['GET'])
     def get_cita(barbero_id):
         try:
