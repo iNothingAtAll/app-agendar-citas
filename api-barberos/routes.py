@@ -4,6 +4,7 @@ from models import Barbero, Cronograma
 import requests
 
 def register_routes(app):
+    # Ruta de bienvenida
     @app.route('/')
     def index():
         return {
@@ -18,6 +19,7 @@ def register_routes(app):
         }
 
 
+    # Ruta para registrar un nuevo usuario y generar un token JWT
     @app.route('/registrar/usuario', methods=['POST'])
     def registrar_usuario():
         data = request.get_json()
@@ -37,6 +39,7 @@ def register_routes(app):
         }), 200
 
 
+    # Ruta para obtener todos los barberos
     @app.route('/barberos', methods=['GET'])
     @jwt_required()
     def get_all_barberos():
@@ -55,6 +58,7 @@ def register_routes(app):
             }), 500
 
 
+    # Ruta para obtener las citas de un barbero específico desde la API de citas
     @app.route('/barbero/<int:barbero_id>/citas', methods=['GET'])
     @jwt_required()
     def get_citas_barbero(barbero_id):
@@ -81,6 +85,7 @@ def register_routes(app):
             }), 500
 
 
+    # Ruta para obtener todos los horarios ocupados
     @app.route('/barberos/cronograma', methods=['GET'])
     @jwt_required()
     def get_all_horarios():

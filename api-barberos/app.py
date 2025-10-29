@@ -7,6 +7,7 @@ from models import db
 from routes import register_routes
 
 def create_app():
+    # Crear la instancia de la aplicación Flask
     app = Flask(__name__)
     app.config.from_object(Config)
     

@@ -1,9 +1,13 @@
 import os
 from dotenv import load_dotenv
 
+
+# Load environment variables from .env file
 load_dotenv()
 
+
 class Config:
+    # Database configuration
     MYSQL_HOST = os.getenv('MYSQL_HOST')
     MYSQL_PORT = os.getenv('MYSQL_PORT')
     MYSQL_USER = os.getenv('MYSQL_USER')

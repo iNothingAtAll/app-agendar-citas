@@ -7,6 +7,7 @@ from flask_sqlalchemy import SQLAlchemy
 db = SQLAlchemy()
 
 
+# Modelo de Barbero
 class Barbero(db.Model):
     __tablename__ = 'barberos'
     
@@ -29,6 +30,7 @@ class Barbero(db.Model):
         }
 
 
+# Modelo de Cronograma
 class Cronograma(db.Model):
     __tablename__ = 'cronograma'
     

@@ -8,6 +8,7 @@ from flask_sqlalchemy import SQLAlchemy
 db = SQLAlchemy()
 
 
+# Modelo de EstadoCita
 class EstadoCita(db.Model):
     __tablename__ = 'estados_cita'
     
@@ -24,6 +25,7 @@ class EstadoCita(db.Model):
         }
 
 
+# Modelo de Cita
 class Cita(db.Model):
     __tablename__ = 'citas'
     
