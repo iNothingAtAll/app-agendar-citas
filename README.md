@@ -1,6 +1,6 @@
 # App para agendar citas
 
-Este proyecto contiene una configuración con Docker Compose para levantar un entorno de base de datos con MariaDB y una interfaz web de gestión mediante phpMyAdmin.
+Este es un proyecto para una clase de aplicaciones web en dones se espera conectar dos bases de datos mediante apis, implementación de jwt y el uso de algún framework para desarrollo front-end
 
 ---
 
@@ -17,14 +17,6 @@ Ejecutar en una terminal dentro del proyecto:
 
 ```bash
 docker-compose up --build
-```
-
-## Acceder a phpMyAdmin
-
-Una vez corriendo, se puede acceder desde el navegador usando:
-
-```txt
-http://localhost:8080
 ```
 
 ## Cómo detener y limpiar todo
