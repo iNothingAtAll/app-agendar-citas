@@ -25,8 +25,6 @@ def register_routes(app):
         data = request.get_json()
 
         nombre = data.get("nombre")
-        correo = data.get("correo")
-        telefono = data.get("telefono")
         
         access_token = create_access_token(
             identity=nombre,
@@ -68,7 +66,7 @@ def register_routes(app):
             if response.status_code != 200:
                 return jsonify({
                     'success': False,
-                    'error': f'Error al obtener citas.'
+                    'error': 'Error al obtener citas.'
                 }), response.status_code
 
             data = response.json()
