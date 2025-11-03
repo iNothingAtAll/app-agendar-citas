@@ -1,5 +1,5 @@
 from flask import jsonify
-from models import Cita, EstadoCita
+from models import Cita
 
 
 def register_routes(app):
