@@ -54,7 +54,7 @@ services:
             - ./api-citas:/app
 
         depends_on:
-                - barberos-db
+                - citas-db
 
         networks:
             - citas-net
