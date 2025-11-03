@@ -40,7 +40,7 @@ services:
 
 
     api-citas:
-        build: ./api-citas/
+        image: ghcr.io/inothingatall/api-citas:latest
         container_name: api-citas
         restart: unless-stopped
         
@@ -62,7 +62,7 @@ services:
 
 
     api-barberos:
-        build: ./api-barberos/
+        image: ghcr.io/inothingatall/api-barberos:latest
         container_name: api-barberos
         restart: unless-stopped
         
