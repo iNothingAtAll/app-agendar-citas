@@ -1,4 +1,4 @@
-name: Python application
+name: Lint Code
 
 on:
   push:
