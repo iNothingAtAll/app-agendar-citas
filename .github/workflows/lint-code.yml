@@ -10,8 +10,14 @@ permissions:
   contents: read
 
 jobs:
-  lint-barberos:
+  lint:
     runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        api:
+          - api-barberos
+          - api-citas
 
     steps:
       - uses: actions/checkout@v4
@@ -21,33 +27,12 @@ jobs:
         with:
           python-version: "3.11"
 
-      - name: Install dependencies
+      - name: Install dependencies for ${{ matrix.api }}
         run: |
           pip install --upgrade pip
-          pip install -r ./api-barberos/requirements.txt
+          pip install -r ./${{ matrix.api }}/requirements.txt
 
-      - name: Lint with ruff
+      - name: Lint ${{ matrix.api }} with Ruff
         run: |
           pip install ruff
-          ruff check ./api-barberos
-
-  lint-citas:
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Set up Python 3.11
-        uses: actions/setup-python@v3
-        with:
-          python-version: "3.11"
-
-      - name: Install dependencies
-        run: |
-          pip install --upgrade pip
-          pip install -r ./api-citas/requirements.txt
-
-      - name: Lint with ruff
-        run: |
-          pip install ruff
-          ruff check ./api-citas
+          ruff check ./${{ matrix.api }}
