@@ -5,18 +5,17 @@ on:
     branches: ["main"]
     paths:
       - "**/Dockerfile"
+      - "**/requirements.txt"
 
   pull_request:
     branches: ["main"]
     paths:
       - "**/Dockerfile"
+      - "**/requirements.txt"
 
 permissions:
   contents: read
   packages: write
-
-env:
-  IMAGE_OWNER: ${{ github.repository_owner }}
 
 jobs:
   build-and-push:
