@@ -4,14 +4,12 @@ on:
   push:
     branches: ["main"]
     paths:
-      - "**/Dockerfile"
-      - "**/requirements.txt"
+      - "./api-**/"
 
   pull_request:
     branches: ["main"]
     paths:
-      - "**/Dockerfile"
-      - "**/requirements.txt"
+      - "./api-**/"
 
 permissions:
   contents: read
