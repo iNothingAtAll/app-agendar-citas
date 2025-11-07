@@ -3,11 +3,18 @@ USE barberos_db;
 
 
 -- Datos iniciales para la tabla de barberos
-INSERT INTO barberos (nombre, edad, correo, telefono) VALUES
-('Carlos Ramírez', 30, 'carlos.ramirez@barberia.com', '555-1234'),
-('Juan Torres', 27, 'juan.torres@barberia.com', '555-5678'),
-('Luis Gómez', 35, 'luis.gomez@barberia.com', '555-9012'),
-('Miguel López', 29, 'miguel.lopez@barberia.com', '555-3456');
+INSERT INTO barberos (nombre, edad, correo, telefono, contrasenya) VALUES
+('Carlos Ramírez', 30, 'carlos.ramirez@barberia.com', '555-1234', "12345"),
+('Juan Torres', 27, 'juan.torres@barberia.com', '555-5678', "12345"),
+('Luis Gómez', 35, 'luis.gomez@barberia.com', '555-9012', "12345"),
+('Miguel López', 29, 'miguel.lopez@barberia.com', '555-3456', "12345");
+
+
+-- Datos iniciales para la tabla de clientes
+INSERT INTO cliente (nombre, correo, telefono) VALUES
+('Ana Martínez', 'ana.algo@algo.com', '555-7890'),
+('Beatriz Sánchez', 'sanchez.algo@algo.com', '555-2345'),
+('Carla Fernández', 'carla.algo@algo.com', '555-6789');
 
 
 -- Ejemplo de horarios ocupados

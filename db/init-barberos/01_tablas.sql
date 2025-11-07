@@ -9,6 +9,16 @@ CREATE TABLE barberos (
     nombre VARCHAR(100) NOT NULL,
     edad INT CHECK (edad > 0),
     correo VARCHAR(150) UNIQUE NOT NULL,
+    telefono VARCHAR(20),
+    contrasenya VARCHAR(255) NOT NULL
+);
+
+
+-- Tabla para almacenar la información de los clientes
+CREATE TABLE cliente (
+    id_cliente INT PRIMARY KEY AUTO_INCREMENT,
+    nombre VARCHAR(100) NOT NULL,
+    correo VARCHAR(150) UNIQUE NOT NULL,
     telefono VARCHAR(20)
 );
 
