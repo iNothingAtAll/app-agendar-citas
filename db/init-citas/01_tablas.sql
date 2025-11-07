@@ -19,6 +19,7 @@ CREATE TABLE citas (
     fecha_creacion DATETIME DEFAULT CURRENT_TIMESTAMP,
     
     barbero_id INT NOT NULL,
+    cliente_id INT NOT NULL,
     estado_id INT NOT NULL DEFAULT 1,
 
     FOREIGN KEY (estado_id) REFERENCES estados_cita(id)
