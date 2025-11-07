@@ -16,6 +16,7 @@ class Barbero(db.Model):
     edad = Column(Integer)
     correo = Column(String(150), unique=True, nullable=False)
     telefono = Column(String(20))
+    contrasenya = Column(String(255), nullable=False)
     
     # Relación con horarios ocupados
     cronograma = relationship('Cronograma', back_populates='barbero')
@@ -26,7 +27,8 @@ class Barbero(db.Model):
             'nombre': self.nombre,
             'edad': self.edad,
             'correo': self.correo,
-            'telefono': self.telefono
+            'telefono': self.telefono,
+            'contrasenya': self.contrasenya
         }
 
 
