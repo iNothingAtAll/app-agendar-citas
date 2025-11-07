@@ -1,6 +1,7 @@
-from flask_jwt_extended import create_access_token, jwt_required
+from flask_jwt_extended import jwt_required
 from flask import jsonify, request
-from models import Barbero, Cronograma
+from models import db, Barbero, Cronograma, Cliente
+from services import create_token, get_cliente_by_email, insertar_cliente
 import requests
 
 def register_routes(app):
@@ -23,18 +24,27 @@ def register_routes(app):
     @app.route('/registrar/usuario', methods=['POST'])
     def registrar_usuario():
         data = request.get_json()
-
         nombre = data.get("nombre")
-        
-        access_token = create_access_token(
-            identity=nombre,
-            additional_claims={"role": "usuario"}
-        )
+        correo = data.get("correo")
 
-        return jsonify({
-            "success": True,
-            "access_token": access_token
-        }), 200
+        if not nombre or not correo:
+            return jsonify({
+                'success': False,
+                'error': "Faltan datos obligatorios"
+            }), 400
+
+        cliente = get_cliente_by_email(correo)
+        
+        if cliente["success"]:
+            return jsonify({
+                'success': False,
+                'error': "El cliente ya existe"
+            }), 400
+
+        insertar_cliente(data)
+        token = create_token(data)
+        
+        return token
 
 
     # Ruta para obtener todos los barberos
