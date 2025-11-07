@@ -32,6 +32,24 @@ class Barbero(db.Model):
         }
 
 
+# Modelo de Cliente
+class Cliente(db.Model):
+    __tablename__ = 'cliente'
+    
+    id_cliente = Column(Integer, primary_key=True, autoincrement=True)
+    nombre = Column(String(100), nullable=False)
+    correo = Column(String(150), unique=True, nullable=False)
+    telefono = Column(String(20))
+    
+    def to_dict(self):
+        return {
+            'id_cliente': self.id_cliente,
+            'nombre': self.nombre,
+            'correo': self.correo,
+            'telefono': self.telefono
+        }
+
+
 # Modelo de Cronograma
 class Cronograma(db.Model):
     __tablename__ = 'cronograma'
