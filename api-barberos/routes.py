@@ -1,7 +1,7 @@
 from flask_jwt_extended import jwt_required
 from flask import jsonify, request
 from models import db, Barbero, Cronograma, Cliente
-from services import create_token, get_cliente_by_email, insertar_cliente
+from utils import create_client_token, get_model_by_attributes, create_model_instance
 import requests
 
 def register_routes(app):
@@ -33,18 +33,34 @@ def register_routes(app):
                 'error': "Faltan datos obligatorios"
             }), 400
 
-        cliente = get_cliente_by_email(correo)
+        result_cliente = get_model_by_attributes(Cliente, {'correo': correo})
         
-        if cliente["success"]:
+        if result_cliente["success"]:
             return jsonify({
                 'success': False,
                 'error': "El cliente ya existe"
             }), 400
 
-        insertar_cliente(data)
-        token = create_token(data)
+        result_instance = create_model_instance(Cliente, data)
+
+        if not result_instance["success"]:
+            return jsonify({
+                'success': False,
+                'error': result_instance["error"]
+            }), 500
+
+        result_token = create_client_token(data)
         
-        return token
+        if not result_token["success"]:
+            return jsonify({
+                'success': False,
+                'error': result_token["error"]
+            }), 500
+        
+        return jsonify({
+            "success": True,
+            "token": result_token["token"]
+        })
 
 
     # Ruta para obtener todos los barberos
