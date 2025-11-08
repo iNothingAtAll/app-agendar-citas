@@ -44,23 +44,13 @@ def register_routes(app):
         result_instance = create_model_instance(Cliente, data)
 
         if not result_instance["success"]:
-            return jsonify({
-                'success': False,
-                'error': result_instance["error"]
-            }), 500
+            return jsonify(result_instance), 500
 
         result_token = create_client_token(data)
         
-        if not result_token["success"]:
-            return jsonify({
-                'success': False,
-                'error': result_token["error"]
-            }), 500
-        
-        return jsonify({
-            "success": True,
-            "token": result_token["token"]
-        })
+        return jsonify(result_token),
+            (201 if result_token["success"] else 500)
+
 
 
     # Ruta para obtener todos los barberos
