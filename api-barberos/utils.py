@@ -1,8 +1,5 @@
 from flask_jwt_extended import create_access_token
-from flask import jsonify
-from models import db, Cliente
-import requests
-
+from models import db
 
 
 def get_model_by_attributes(model, attributes: dict):
