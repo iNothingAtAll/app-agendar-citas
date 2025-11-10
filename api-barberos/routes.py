@@ -47,9 +47,9 @@ def register_routes(app):
             return jsonify(result_instance), 500
 
         result_token = create_client_token(data)
-        
-        return jsonify(result_token),
-            (201 if result_token["success"] else 500)
+        status_code = 200 if result_token["success"] else 500
+
+        return jsonify(result_token), status_code
 
 
 
