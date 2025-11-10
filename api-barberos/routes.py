@@ -1,6 +1,6 @@
 from flask_jwt_extended import jwt_required
 from flask import jsonify, request
-from models import db, Barbero, Cronograma, Cliente
+from models import Barbero, Cronograma, Cliente
 from utils import create_client_token, get_model_by_attributes, create_model_instance
 import requests
 
