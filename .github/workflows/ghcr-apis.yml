@@ -1,20 +1,11 @@
 name: Build and Push Docker Images
 
 on:
-  workflow_run:
-    workflows: ["Lint Code"]
-    types:
-      - completed
-
   push:
     branches: ["main"]
-    paths:
-      - "./api-**/"
 
   pull_request:
     branches: ["main"]
-    paths:
-      - "./api-**/"
 
 permissions:
   contents: read
@@ -22,8 +13,6 @@ permissions:
 
 jobs:
   build-and-push:
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}
-
     runs-on: ubuntu-latest
 
     strategy:
