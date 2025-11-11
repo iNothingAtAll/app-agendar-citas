@@ -1,5 +1,5 @@
 # Imagen base
-FROM python:3.11.0-alpine3.15
+FROM python:3.11-slim
 
 
 # Establece el directorio de trabajo
